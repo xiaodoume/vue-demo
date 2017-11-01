@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>测试</title>
+  <link rel="stylesheet" href="semantic.css">
+
+</head>
+
+<body>
+  <div id="app">
+    <div class="ui container">
+      <div class="ui divider"></div>
+      <button v-bind:class="[buttonClass,colorClass,{loading:isLoding}]">按钮</button>
+      <div class="ui hiden divider"></div>
+      <div v-text="message"></div>
+      <div class="ui divider"></div>
+      <div class="ui segment" v-if="display">
+        <p>{{message}}</p>
+      </div>
+      <div class="ui divider"></div>
+      <template v-for="(item,index) in items">
+        <div >
+          {{index}}.{{item.text}}
+        </div>
+        <div class="ui divider"></div>
+      </template>
+
+      <!-- v-on事件 -->
+      <div class="ui divider"></div>
+      <button class="ui button" @click="like">
+        喜欢
+      </button>
+      <div class="ui red circular label">
+        {{ conunter }}
+      </div>
+
+      <!-- v-on键盘事件 -->
+      <div class="ui divider"></div>
+      <div class="ui input">
+        <input v-on:keyup.enter="process">
+      </div>
+
+      <!-- v-on键盘事件 -->
+      <div class="ui divider"></div>
+      <div class="ui green inverted segment">
+        {{message}}
+      </div>
+      <div class="ui input">
+        <input v-model="message">
+      </div>
+      <div class="ui divider"></div>
+      <div class="ui radio checkbox">
+        <input type="radio" value="hola" v-model="message">
+        <label>hola</label>
+      </div>
+      <div class="ui radio checkbox">
+        <input type="radio" value="hello" v-model="message">
+        <label>hello</label>
+      </div>
+      <div class="ui radio checkbox">
+        <input type="radio" value="您好" v-model="message">
+        <label>您好</label>
+      </div>
+      <div class="ui divider"></div>
+      <div class="ui pink inverted segment">
+        {{seleced}}
+      </div>
+      <select class="ui dropdown" v-model="seleced">
+      <option v-for="option in options" :value="option.value">{{option.value}}</option>
+    </select>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script src="./index.js" charset="utf-8"></script>
+</body>
+
+</html>

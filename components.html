@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Components</title>
+  <link rel="stylesheet" href="semantic.css">
+</head>
+
+<body>
+  <div id="app">
+    <div class="ui container">
+      <div class="ui divider"></div>
+      <!-- <button class="ui button">button</button> -->
+      <ui-button :message="published ? 'unpublish' : 'publish'"></ui-button>
+      <ui-button message='edit'></ui-button>
+      <ui-button message="delete"></ui-button>
+    </div>
+
+  </div>
+
+  <script src="vue.js"></script>
+  <script type="text/javascript">
+    // var uiButton = {
+    //   template: '<div class="ui button">button</div>'
+    // }
+
+    Vue.component('ui-button', {
+      props: {
+        message: {
+          type: String,
+          default: 'button',
+          required: true,
+          validator (value){
+            return value.length > 3
+          }
+        }
+      },
+      template: '<button class="ui button">{{message}}</button>'
+    });
+
+    var dataSource = {
+      published: true
+    };
+
+    var vm = new Vue({
+      el: '#app',
+      data: dataSource
+      // components: {
+      //   'ui-buttion': uiButton
+      // }
+    });
+  </script>
+</body>
+
+</html>

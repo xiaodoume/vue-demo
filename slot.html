@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Components</title>
+  <link rel="stylesheet" href="semantic.css">
+</head>
+
+<body>
+  <div id="app">
+    <div class="ui container">
+      <div class="ui hidden divider"></div>
+      <card>
+        <img slot="image" src="https://gss0.bdstatic.com/-4o3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike92%2C5%2C5%2C92%2C30/sign=6acc305576d98d1062d904634056d36b/0824ab18972bd40771eb755471899e510fb3096e.jpg" alt="">
+        <h1 slot="header">洪崖洞</h1>
+        <p slot="meta">一天前</p>
+      </card>
+    </div>
+  </div>
+
+  <script src="vue.js"></script>
+  <script type="text/javascript">
+    Vue.component('card', {
+      template: '\
+      <div class="ui card">\
+        <div class="image">\
+          <slot name="image">image</slot>\
+        </div>\
+        <div class="content">\
+          <div class="header">\
+            <slot name="header">header</slot>\
+          </div>\
+          <div class="meta">\
+            <slot name="meta">meta</slot>\
+          </div>\
+        </div>\
+      </div>\
+      '
+    });
+
+    var dataSource = {
+
+    };
+
+    var vm = new Vue({
+      el: '#app',
+      data: dataSource
+    });
+  </script>
+</body>
+
+</html>
